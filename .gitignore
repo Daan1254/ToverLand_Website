@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
 
 /obj
 /bin
+=======
+bin
+obj
+/.vs
+>>>>>>> Stashed changes

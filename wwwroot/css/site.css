@@ -1,22 +1,71 @@
-html {
-  font-size: 14px;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.navbar-link {
+  padding: 10px 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.navbar-link:hover {
+  background-color: #ff6562;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.clock {
+  border: 1px solid red;
 }
 
-body {
-  margin-bottom: 60px;
+.col-1 {
+  width: 8.33%;
+}
+.col-2 {
+  width: 16.66%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-4 {
+  width: 33.33%;
+}
+.col-5 {
+  width: 41.66%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-7 {
+  width: 58.33%;
+}
+.col-8 {
+  width: 66.66%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-10 {
+  width: 83.33%;
+}
+.col-11 {
+  width: 91.66%;
+}
+.col-12 {
+  width: 100%;
+}
+[class*="col-"] {
+  float: left;
+  border-style: hidden;
+  border: transparent;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
