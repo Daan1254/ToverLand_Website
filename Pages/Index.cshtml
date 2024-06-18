@@ -48,7 +48,7 @@
   const ctx1 = document.getElementById('visitors');
 
   new Chart(ctx1, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
@@ -86,12 +86,17 @@ const ctx2 = document.getElementById('attraction');
       }
     }
   });
+
+
   document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
+  var calendar = new FullCalendar.Calendar(calendarEl, 
+  
+  {
     timeZone: "UTC",
     initialView: "dayGridWeek",
+    height: '100%',
     headerToolbar: {
       left: "prev,next",
       center: "title",
