@@ -7,13 +7,107 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-@* <div class="clock" id="clock"></div> 
-      <div id='calendar'></div> *@
+<main class="grid">
+    <h1>Dashboard</h1>
+    <div class="card">
+  <div><canvas id="occupation"></canvas></div>
+    </div>
+     <div class="card">
+        <div><canvas id="visitors"></canvas></div>
+    </div>
+     <div class="card">
+      <div><canvas id="attraction"></canvas></div>
+    </div>
+     <div class="card">
+      <div id='calendar'></div>
+    </div>
+    </main>
 
-<div class="row">
-<div class="col-1"></div>
-<div class="col-10">
-    <p>pizza</p>
-</div>
-<div class="col-1"></div>
-</div>
+    <script>
+          const chart1 = document.getElementById('occupation');
+
+        new Chart(chart1, {
+            type: 'bar',
+            data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+
+  const ctx1 = document.getElementById('visitors');
+
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+const ctx2 = document.getElementById('attraction');
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+  var calendarEl = document.getElementById("calendar");
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    timeZone: "UTC",
+    initialView: "dayGridWeek",
+    headerToolbar: {
+      left: "prev,next",
+      center: "title",
+      right: "dayGridWeek,dayGridDay",
+    },
+    editable: true,
+    events: "https://fullcalendar.io/api/demo-feeds/events.json",
+  });
+
+  calendar.render();
+});
+
+ 
+</script>
+ 
+
+    @* <div class="clock" id="clock"></div> 
+       *@
+

@@ -3,6 +3,9 @@
 
 // Write your JavaScript code.
 
+// Adding chart.js to the document Javascript:
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>;
+
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
@@ -40,50 +43,3 @@ function checkTime(i) {
   return i;
 }
 // Clock
-
-// Adding chart.js to the document Javascript:
-const newbar = document.getElementById("bar");
-
-new Chart(newbar, {
-  type: "bar",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  },
-});
-
-const newpie = document.getElementById("pie");
-
-new Chart(newpie, {
-  type: "pie",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  },
-});
