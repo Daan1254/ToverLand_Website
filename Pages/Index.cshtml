@@ -1,118 +1,40 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Login";
 }
- <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<main class="grid">
-    <h1>Dashboard</h1>
-    <div class="card">
-  <div><canvas id="occupation"></canvas></div>
-    </div>
-     <div class="card">
-        <div><canvas id="visitors"></canvas></div>
-    </div>
-     <div class="card">
-      <div><canvas id="attraction"></canvas></div>
-    </div>
-     <div class="card">
-      <div id='calendar'></div>
-    </div>
-    </main>
-
-    <script>
-          const chart1 = document.getElementById('occupation');
-
-        new Chart(chart1, {
-            type: 'bar',
-            data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-            },
-            options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-            }
-        });
-
-  const ctx1 = document.getElementById('visitors');
-
-  new Chart(ctx1, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-const ctx2 = document.getElementById('attraction');
-
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-  var calendarEl = document.getElementById("calendar");
-
-  var calendar = new FullCalendar.Calendar(calendarEl, 
-  
-  {
-    timeZone: "UTC",
-    initialView: "dayGridWeek",
-    height: '100%',
-    headerToolbar: {
-      left: "prev,next",
-      center: "title",
-      right: "dayGridWeek,dayGridDay",
-    },
-    editable: true,
-    events: "https://fullcalendar.io/api/demo-feeds/events.json",
-  });
-
-  calendar.render();
-});
-
- 
-</script>
+@{
+    Layout = null;
+}
+  <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
  
 
-    @* <div class="clock" id="clock"></div> 
-       *@
+  <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+<body>
+<div class="wrapper">
+    <form action="">
+        <h1>Login</h1>
+    <div class="input-box">
+        <input type="text" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-box">
+        <input type="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+
+    <div class="remember-forgot">
+        <label><input type="checkbox">Remember me?</label>
+        <a href="#">Forgot Password?</a>
+    </div>
+    <button type="submit" class="btn">Login</button>
+
+    <div class="register-link">
+    <p>Don't have an account? Mail the Management <br> mangement@toverland.com</p>
+    </div>
+    </form>
+</div>
+</body>
+
 

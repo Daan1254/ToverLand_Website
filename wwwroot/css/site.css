@@ -49,17 +49,16 @@ main {
   gap: 30px;
   padding: 20px;
 }
-
-main h1 {
+.dash {
   grid-column: span 12;
   text-align: center;
   color: #fff;
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 main .card {
   background-color: #4240a6;
-
   padding: 20px;
   border-radius: 8px;
   color: white;
