@@ -14,6 +14,7 @@
 <body>
 <div class="wrapper">
     <form action="">
+        <img src="/images/Toverlandflaglogo.png" alt="">
         <h1>Login</h1>
     <div class="input-box">
         <i class='bx bxs-user'></i>
@@ -26,16 +27,27 @@
     </div>
 
     <div class="remember-forgot">
-        <label><input type="checkbox">Remember me?</label>
+        <label><input type="checkbox">Remember me</label>
         <a href="#">Forgot Password?</a>
     </div>
     <button type="submit" class="btn">Login</button>
 
     <div class="register-link">
-    <p>Don't have an account? Mail the Management <br> mangement@toverland.com</p>
+    <p>Don't have an account? Mail the Management <br> <span id="email" onclick="copyToClipboard()">management@toverland.com</span></p>
     </div>
     </form>
 </div>
+
+<script>
+function copyToClipboard() {
+    const emailText = document.getElementById('email').innerText;
+    navigator.clipboard.writeText(emailText).then(() => {
+        alert('Copied to clipboard');
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
 </body>
 
 
