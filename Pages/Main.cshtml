@@ -29,20 +29,24 @@
     </main>
 
     <script>
-         const chart1 = document.getElementById('occupation');
+          const chart1 = document.getElementById('occupation');
+
+        const occupationData = [348, 243, 123, 213, 278, 413, 348];
+        const waitingTimeData = [45, 30, 20, 25, 35, 50, 40];
+        const backgroundColors = ['#FF3131', '#FFBD59', '#7ED957', '#FFBD59', '#FFBD59', '#FF3131', '#FF3131'];
 
         new Chart(chart1, {
             type: 'bar',
             data: {
                 labels: ['Troy', 'Fēnix', 'Pixarus', 'Garden Tour', 'Merlins Quest', 'Dwervelwind', 'Blitz Bahn'],
-                datasets: [{
-                    label: 'Occupation per Attraction',
-                    data: [300, 243, 123, 213, 278, 413, 348],
-                    backgroundColor: [
-                        '#FF3131', '#FFBD59', '#7ED957', '#FF3131', '#FFBD59', '#FF3131', '#7ED957'
-                    ],
-                    borderWidth: 1
-                }]
+                datasets: [
+                    {
+                        label: 'Occupation per Attraction',
+                        data: occupationData,
+                        backgroundColor: backgroundColors,
+                        borderWidth: 1,
+                    }
+                ]
             },
             options: {
                 plugins: {
@@ -80,6 +84,15 @@
                                 ];
                             }
                         }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const occupation = occupationData[context.dataIndex];
+                                const waitingTime = waitingTimeData[context.dataIndex];
+                                return `Number of Visitors: ${occupation}, Waiting Time: ${waitingTime} minutes`;
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -92,11 +105,11 @@
                             weight: 'bold'
                         },
                         title: {
-                          display: true,
-                          text: 'number of visitors',
-                          color: 'black',
-                          weight: 'bold'
-                          },  
+                            display: true,
+                            text: 'Number of Visitors',
+                            color: 'black',
+                            weight: 'bold'
+                        }
                     },
                     x: {
                         ticks: {
@@ -107,48 +120,42 @@
                 }
             }
         });
+</script>
 
-
-  const ctx1 = document.getElementById('visitors');
-
-  new Chart(ctx1, {
-    type: 'line',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      datasets: [{
-        label: '# Vistors Daily',
-        data: [1245, 3458, 5485, 5642, 7248, 8997, 9321],
-        borderWidth: 1
-      }]
-    },
-      options: {
-          plugins: {
-            legend: {
-                labels: {
-                  weight: 'bolder',
-                    color: 'black'
+<script>
+// Chart 2: Line Chart (Daily Visitors)
+            const dailyVisitorsCtx = document.getElementById('visitors');
+            new Chart(dailyVisitorsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                    datasets: [{
+                        label: 'Daily Visitors',
+                        data: [3200, 2352, 1186, 4432, 6532, 7634, 7723],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { labels: { color: 'black' } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 10000,
+                            grace: '5%',
+                            ticks: { color: 'black', weight: 'bold' }
+                        },
+                        x: { ticks: { color: 'black', weight: 'bold' } }
+                    }
                 }
-            }
-        },
-        scales: {
-            y: {
-               beginAtZero: true,
-                grace: '5%',
-                ticks: {
-                    color: 'black',  
-                    weight: 'bold'
-                }
-            },
-            x: {
-                ticks: {
-                    color: 'black',
-                    weight: 'bold'
-                }
-            }
-        }
-    }
-});
+            });
 
+</script>
+
+<script>
+  //Chart 3: Line Chart Visitors per hour of any attraction (example data Troy)
 const ctx2 = document.getElementById('attraction');
 
   new Chart(ctx2, {
