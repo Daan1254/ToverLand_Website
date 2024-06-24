@@ -18,7 +18,7 @@ body {
   gap: 30px;
 }
 header {
-  background-color: #0a2f87;
+  background-color: #2e2d53;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
@@ -69,7 +69,7 @@ header nav ul li a:hover::after {
 
 .foot {
   text-align: center;
-  color: white;
+  color: #2e2d53;
   text-decoration: none;
   padding-bottom: 20px;
 }

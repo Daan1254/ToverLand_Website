@@ -8,6 +8,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+<script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar/rrule@6.1.14/index.global.min.js'></script>
 
 <div class="dash"><h1>Dashboard</h1></div>
 <main class="grid">
@@ -26,102 +29,190 @@
     </main>
 
     <script>
-          const chart1 = document.getElementById('occupation');
+         const chart1 = document.getElementById('occupation');
 
         new Chart(chart1, {
             type: 'bar',
             data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
+                labels: ['Troy', 'Fēnix', 'Pixarus', 'Garden Tour', 'Merlins Quest', 'Dwervelwind', 'Blitz Bahn'],
+                datasets: [{
+                    label: 'Occupation per Attraction',
+                    data: [300, 243, 123, 213, 278, 413, 348],
+                    backgroundColor: [
+                        '#FF3131', '#FFBD59', '#7ED957', '#FF3131', '#FFBD59', '#FF3131', '#7ED957'
+                    ],
+                    borderWidth: 1
+                }]
             },
             options: {
-            scales: {
-                y: {
-                beginAtZero: true
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            weight: 'bolder',
+                            color: 'black',
+                            generateLabels: function(chart) {
+                                return [
+                                    {
+                                        text: 'Busy',
+                                        fillStyle: 'red',
+                                        strokeStyle: 'red',
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: 0
+                                    },
+                                    {
+                                        text: 'Minimal Busy',
+                                        fillStyle: 'orange',
+                                        strokeStyle: 'orange',
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: 1
+                                    },
+                                    {
+                                        text: 'Not Busy',
+                                        fillStyle: '#7ED957',
+                                        strokeStyle: '#7ED957',
+                                        lineWidth: 1,
+                                        hidden: false,
+                                        index: 2
+                                    }
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 500,
+                        ticks: {
+                            color: 'black',
+                            weight: 'bold'
+                        },
+                        title: {
+                          display: true,
+                          text: 'number of visitors',
+                          color: 'black',
+                          weight: 'bold'
+                          },  
+                    },
+                    x: {
+                        ticks: {
+                            color: 'black',
+                            weight: 'bold'
+                        }
+                    }
                 }
             }
-            }
         });
+
 
   const ctx1 = document.getElementById('visitors');
 
   new Chart(ctx1, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: '# Vistors Daily',
+        data: [1245, 3458, 5485, 5642, 7248, 8997, 9321],
         borderWidth: 1
       }]
     },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      options: {
+          plugins: {
+            legend: {
+                labels: {
+                  weight: 'bolder',
+                    color: 'black'
+                }
+            }
+        },
+        scales: {
+            y: {
+               beginAtZero: true,
+                grace: '5%',
+                ticks: {
+                    color: 'black',  
+                    weight: 'bold'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'black',
+                    weight: 'bold'
+                }
+            }
         }
-      }
     }
-  });
+});
 
 const ctx2 = document.getElementById('attraction');
 
   new Chart(ctx2, {
-    type: 'bar',
+    type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Visitors Troy',
+        data: [289, 243, 267, 188, 130, 212, 261, 264, 223, 189, 127],
         borderWidth: 1
       }]
     },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+       options: {
+          plugins: {
+            legend: {
+                labels: {
+                    color: 'black'
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                min: 0,
+                max: 500,
+                grace: '5%',
+                ticks: {
+                    color: 'black',  
+                    weight: 'bold'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'black',
+                    weight: 'bold'
+                }
+            }
         }
-      }
     }
-  });
+});
 
-
-
+  
+  
 
   document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
    var events = 
   [
     {
-      title: 'Event 1',
-      start: '2024-06-18T10:00:00',
-      end: '2024-06-18T12:00:00'
-    },
-    {
-      title: 'Event 2',
-      start: '2024-06-19T14:00:00',
-      end: '2024-06-19T16:00:00'
-    },
-    {
       title: 'Troy',
-      start: '2024-06-21T14:00:00',
-      end: '2024-06-19T16:00:00'
-    },
-    {
-      title: 'Jenga River',
-      start: '2024-06-20T14:00:00',
-      end: '2024-06-19T16:00:00'
-    },
+      rrule: 
+      {
+        freq: 'daily',
+        dtstart: '2024-06-24T08:00:00',
+        until: '2024-12-31', 
+      },
+        duration: '02:00'  
+    }
 
   ];
 
   var calendar = new FullCalendar.Calendar(calendarEl, 
   {
-    timeZone: "UTC",
+    timeZone: "UTC+1",
     initialView: "timeGridWeek",
     height: '100%',
     headerToolbar: {
@@ -140,8 +231,5 @@ const ctx2 = document.getElementById('attraction');
 
  
 </script>
- 
 
-    @* <div class="clock" id="clock"></div> 
-       *@
 
