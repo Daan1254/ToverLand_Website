@@ -12,7 +12,6 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar/rrule@6.1.14/index.global.min.js'></script>
 
-<div class="dash"><h1>Dashboard</h1></div>
 <main class="grid">
     <div class="card">
   <div><canvas id="occupation"></canvas></div>
@@ -112,7 +111,13 @@
                         }
                     },
                     x: {
-                        ticks: { color: 'black', weight: 'bold'}
+                        ticks: { color: 'black', weight: 'bold'},
+                           title: {
+                            display: true,
+                            text: 'Attraction',
+                            color: 'black',
+                            weight: 'bold',
+                        },
                     }
                 }
             }
@@ -149,9 +154,23 @@
                         min: 0,
                         max: 10000,
                         grace: '5%',
-                        ticks: { color: 'black', weight: 'bold' }
+                        ticks: { color: 'black', weight: 'bold' },
+                        title: {
+                            display: true,
+                            text: 'Number of Daily Visitors',
+                            color: 'black',
+                            weight: 'bold'
+                        }
                     },
-                    x: { ticks: { color: 'black', weight: 'bold' } }
+                    x: { ticks: { color: 'black', weight: 'bold' },
+                    title: {
+                            display: true,
+                            text: 'Day',
+                            color: 'black',
+                            weight: 'bold',
+                        },
+                     }
+                    
                 }
             }
         });
@@ -190,13 +209,25 @@ const ctx2 = document.getElementById('attraction');
                 ticks: {
                     color: 'black',  
                     weight: 'bold'
-                }
+                },
+                title: {
+                            display: true,
+                            text: 'Visitors Troy',
+                            color: 'black',
+                            weight: 'bold',
+                        },
             },
             x: {
                 ticks: {
                     color: 'black',
                     weight: 'bold'
-                }
+                },
+                title: {
+                            display: true,
+                            text: 'Time',
+                            color: 'black',
+                            weight: 'bold',
+                        },
             }
         }
     }
@@ -247,7 +278,20 @@ const ctx2 = document.getElementById('attraction');
                 dtstart: '2024-06-24T10:30:00',
                 until: '2024-12-31T12:00:00'
             },
-            color: '#FFC0CB' // Assigning a color to this event
+            color: '#f58b9e' // Assigning a color to this event
+        },
+        {
+            title: 'Pixarus, Avalon',
+            startTime: '16:30:00', // Start time for the event
+            endTime: '18:00:00',   // End time for the event
+            daysOfWeek: [2,], // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            rrule: {
+                freq: 'weekly',
+                byweekday: [0, 1, 2, 3, 4, 5, 6], // Repeat on all days of the week
+                dtstart: '2024-06-24T10:30:00',
+                until: '2024-12-31T12:00:00'
+            },
+            color: '#6464f7' // Assigning a color to this event
         },
         // Event for other days (Wednesday, Thursday, Saturday, Sunday) from 08:00 to 10:00
         {
@@ -255,7 +299,7 @@ const ctx2 = document.getElementById('attraction');
             daysOfWeek: [3, 4, 6, 0], // 3 = Wednesday, 4 = Thursday, 6 = Saturday, 0 = Sunday
             startTime: '08:00',
             endTime: '10:00',
-            color: '#0000FF',
+            color: '#6464f7',
             rrule: {
                 freq: 'weekly',
                 byweekday: [3, 4, 6, 0], // Repeat on Wednesday, Thursday, Saturday, Sunday
@@ -265,6 +309,7 @@ const ctx2 = document.getElementById('attraction');
         }
     ];
 
+    //initialize calendar 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         timeZone: "UTC+1",
         initialView: "timeGridDay", 

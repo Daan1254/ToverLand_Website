@@ -9,18 +9,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-image: url("/images/background-login.png");
+  height: 100vh;
+  background-image: url("/images/toverland4.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .wrapper {
   width: 420px;
-  background-color: #4240a6;
-  color: white;
+  background-color: #fffdfd;
+  color: rgb(0, 0, 0);
   padding: 0 30px 30px 30px;
   border-radius: 20px;
+  border: 1px solid black;
 }
 
 .wrapper img {
@@ -49,7 +50,7 @@ body {
   border: 2px solid rgb(70, 135, 233);
   border-radius: 40px;
   outline: none;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 500;
 }
 
@@ -63,7 +64,7 @@ body {
 }
 
 .input-box input::placeholder {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 500;
 }
 
@@ -71,11 +72,11 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .remember-forgot a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 

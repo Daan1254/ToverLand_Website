@@ -5,9 +5,9 @@ namespace ToverLand_Website.Pages
 {
     public class MainModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<AccountModel> _logger;
 
-        public MainModel(ILogger<PrivacyModel> logger)
+        public MainModel(ILogger<AccountModel> logger)
         {
             _logger = logger;
         }
