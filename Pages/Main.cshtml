@@ -112,10 +112,7 @@
                         }
                     },
                     x: {
-                        ticks: {
-                            color: 'black',
-                            weight: 'bold'
-                        }
+                        ticks: { color: 'black', weight: 'bold'}
                     }
                 }
             }
@@ -123,34 +120,41 @@
 </script>
 
 <script>
-// Chart 2: Line Chart (Daily Visitors)
-            const dailyVisitorsCtx = document.getElementById('visitors');
-            new Chart(dailyVisitorsCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                    datasets: [{
-                        label: 'Daily Visitors',
-                        data: [3200, 2352, 1186, 4432, 6532, 7634, 7723],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    plugins: {
-                        legend: { labels: { color: 'black' } }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            min: 0,
-                            max: 10000,
-                            grace: '5%',
-                            ticks: { color: 'black', weight: 'bold' }
-                        },
-                        x: { ticks: { color: 'black', weight: 'bold' } }
+ // Chart 2: Line Chart (Daily Visitors)
+        const dailyVisitorsCtx = document.getElementById('visitors');
+        new Chart(dailyVisitorsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Daily Visitors',
+                    data: [3200, 2352, 1186, 4432, 6532, 7634, 7723],
+                    borderWidth: 1,
+                    borderColor: '#2e2d53', 
+                    tension: 0.3,
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#2e2d53',
+                            fillStyle: '#2e2d53',
+                        }
                     }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 10000,
+                        grace: '5%',
+                        ticks: { color: 'black', weight: 'bold' }
+                    },
+                    x: { ticks: { color: 'black', weight: 'bold' } }
                 }
-            });
+            }
+        });
 
 </script>
 
@@ -165,7 +169,8 @@ const ctx2 = document.getElementById('attraction');
       datasets: [{
         label: 'Visitors Troy',
         data: [289, 243, 267, 188, 130, 212, 261, 264, 223, 189, 127],
-        borderWidth: 1
+        borderWidth: 1,
+        borderColor: '#2e2d53', 
       }]
     },
        options: {
@@ -196,47 +201,94 @@ const ctx2 = document.getElementById('attraction');
         }
     }
 });
-
-  
-  
-
-  document.addEventListener("DOMContentLoaded", function () {
-  var calendarEl = document.getElementById("calendar");
-   var events = 
-  [
-    {
-      title: 'Troy',
-      rrule: 
-      {
-        freq: 'daily',
-        dtstart: '2024-06-24T08:00:00',
-        until: '2024-12-31', 
-      },
-        duration: '02:00'  
-    }
-
-  ];
-
-  var calendar = new FullCalendar.Calendar(calendarEl, 
-  {
-    timeZone: "UTC+1",
-    initialView: "timeGridWeek",
-    height: '100%',
-    headerToolbar: {
-      left: "prev,next",
-      center: "title",
-      right: "timeGridDay,timeGridWeek",
-    },
-    editable: true,
-    events: events,
-  });
-
-  calendar.render();
-});
-
-
-
- 
 </script>
 
+<script>
+//fullcalendar (chart 4)
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var calendarEl = document.getElementById("calendar");
+    var events = [
+     // Event for Monday, Tuesday, and Friday from 08:00 to 10:00
+        {
+            title: 'Troy, Ithaka',
+            daysOfWeek: [1, 2, 5], // 1 = Monday, 2 = Tuesday, 5 = Friday
+            startTime: '08:00',
+            endTime: '10:00',
+            color: '#9A6324',
+            rrule: {
+                freq: 'weekly',
+                byweekday: [1, 2, 5], // Repeat on Monday, Tuesday, and Friday
+                dtstart: '2024-06-24T08:00:00',
+                until: '2024-12-31T10:00:00'
+            }
+        },
+        {
+            title: 'BoosterBike, Magische Vallei',
+            startTime: '10:30:00', // Start time for the event
+            endTime: '12:00:00',   // End time for the event
+            daysOfWeek: [0, 1, 2, 3, 4, 5, 6], // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            rrule: {
+                freq: 'weekly',
+                byweekday: [0, 1, 2, 3, 4, 5, 6], // Repeat on all days of the week
+                dtstart: '2024-06-24T10:30:00',
+                until: '2024-12-31T12:00:00'
+            },
+            color: 'red' // Assigning a color to this event
+        },
+        {
+            title: 'Theekopjes, Land van Toos',
+            startTime: '13:30:00', // Start time for the event
+            endTime: '15:00:00',   // End time for the event
+            daysOfWeek: [0, 2, 4, 5,], // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            rrule: {
+                freq: 'weekly',
+                byweekday: [0, 1, 2, 3, 4, 5, 6], // Repeat on all days of the week
+                dtstart: '2024-06-24T10:30:00',
+                until: '2024-12-31T12:00:00'
+            },
+            color: '#FFC0CB' // Assigning a color to this event
+        },
+        // Event for other days (Wednesday, Thursday, Saturday, Sunday) from 08:00 to 10:00
+        {
+            title: 'Merlins Quest, Avalon',
+            daysOfWeek: [3, 4, 6, 0], // 3 = Wednesday, 4 = Thursday, 6 = Saturday, 0 = Sunday
+            startTime: '08:00',
+            endTime: '10:00',
+            color: '#0000FF',
+            rrule: {
+                freq: 'weekly',
+                byweekday: [3, 4, 6, 0], // Repeat on Wednesday, Thursday, Saturday, Sunday
+                dtstart: '2024-06-24T08:00:00',
+                until: '2024-12-31T10:00:00'
+            }
+        }
+    ];
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: "UTC+1",
+        initialView: "timeGridDay", 
+        height: '100%',
+        slotMinTime: '08:00:00',
+        slotMaxTime: '18:00:01',
+        allDaySlot: false,
+        slotLabelFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            omitZeroMinute: false,
+        },
+        headerToolbar: {
+            left: "prev,next",
+            center: "title",
+            right: "timeGridDay,timeGridWeek",
+        },
+        editable: false,
+        nowIndicator: true,
+        events: events,
+    });
+
+    calendar.render();
+});
+  </script>
 
