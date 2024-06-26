@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ToverLand_Website")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ce0a370bf58fc3340256cbb75dd6fbbfa549067")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49b5232ba2fa389e94e8e17712a73596abd1ab69")]
 [assembly: System.Reflection.AssemblyProductAttribute("ToverLand_Website")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ToverLand_Website")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
